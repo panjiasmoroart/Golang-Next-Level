@@ -27,5 +27,11 @@ func main() {
 	// running in main goroutine
 	speak(2, "Hello")
 
+	// kita menggunakan time.Sleep() untuk melakukan blocker agar proses yang berjalan
+	// di asynchronous bisa segera selesai sebelum main goroutine selesai
+
+	// Cara seperti itu sangat tidak dianjurkan, karena tidak flexible. Misalnya, saat kita melakukan sleep 1 detik,
+	// ternyata goroutine nya jalan di 2 detik. Artinya, kita tidak akan mendapatkan hasil dari goroutine nya
+	//  muncul Waitgroup yang berfungsi untuk melakukan waiting secara otomatis, sampai async nya selesai.
 	time.Sleep(1 * time.Second)
 }
